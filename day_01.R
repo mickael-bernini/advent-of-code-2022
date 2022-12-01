@@ -1,11 +1,15 @@
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source('global_functions.R')
 
-is.test <- TRUE
-day <- 20
+is.test <- FALSE
+day <- 01
 
-data.in <- paste0('data/day_', day, ifelse(is.test,'_test',''), '.txt')
-lines <- readLines(data.in)
-pat <- '^([A-Z])([A-Z]) -> ([A-Z])$'
+data.fn <- get_file_name(day, is.test)
 
-lines <- strsplit(lines, '')
+data.dt <- fread(data.fn, col.names = c("cal"))
+data.dt[,elf := cumsum(is.na(cal))]
+per.elf <- data.dt[,.(cal=sum(cal, na.rm=TRUE)), by=elf]
+
+message(per.elf[,max(cal)])
+setorder(per.elf, -cal)
+message(per.elf[1:3, sum(cal)])

@@ -176,3 +176,12 @@ execute_trycatch <- function(FUN, ...) {
   )
 }
 
+get_file_name <- function(day, is.test, suffixe='', extension = 'txt', ...) {
+  paste0(
+    'data/day_',
+    ifelse(day < 10,'0',''),
+    day,
+    ifelse(is.test,'_test',''),
+    '.', extension
+  )
+}
