@@ -15,7 +15,6 @@ find_message <- function(letrs, num.dist, ...) {
       break
     }
   }
-  
 }
 
 letrs <- strsplit(data.in, '')[[1]]
