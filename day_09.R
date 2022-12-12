@@ -20,7 +20,6 @@ input_to_moves <- function(all.lines, ...) {
 }
 
 frikkie_to_amin <- function(amin, frik, ...) {
-  # Move the tail
   af.1 <- frik[1] - amin[1]
   af.2 <- frik[2] - amin[2]
   
@@ -58,7 +57,6 @@ move_2 <- function(moves, len = 2, ...) {
         amin[dir.dire] <- amin[dir.dire] + dir.sign
         amin -> relive[[1]]
       } else {
-        # Move the head
         frik <- relive[[frik.i]]
         amin <- relive[[frik.i - 1]]
         frik <- frikkie_to_amin(amin, frik)
